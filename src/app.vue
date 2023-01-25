@@ -1,48 +1,73 @@
 <template>
-  <div class="all">
-    <div class="button" @click="addNumb">Numbers</div>
-    <div class="tablet">Чиселка побольше: {{ numb }}</div>
+  <div id="popup" class="popup">
+    <div class="popup_body">
+      <div class="popup_content">
+        <a href="#" class="close">X</a>
+        <div class="title">Модальный заголовок</div>
+        <div class="text">Модальный текст</div>
+      </div>
+    </div>
   </div>
+  <a href="#popup" class="button">Жми кнопки</a>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      numb: 0,
+      IsPopUpVisible: false,
     };
   },
   methods: {
-    addNumb() {
-      this.numb += 1;
+    ShowPopup() {
+      this.IsPopUpVisible = true;
     },
   },
 };
 </script>
 
 <style>
-.all {
+.popup {
   width: 100%;
   height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0%;
+  left: 0%;
+  display: none;
+}
+.popup:target {
+  display: block;
+}
+.popup_body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100ch;
+  padding: 30px 10px;
 }
-.tablet {
-  padding: 5px;
-  background: red;
-  border-radius: 10px;
+.popup_content {
+  background-color: aliceblue;
+  color: black;
+  max-width: 500px;
+  padding: 150px;
+  position: relative;
+}
+.popup_title {
+  font-size: 40px;
+  margin: 0px 0px 15px 0px;
+}
+.close {
+  font-size: 20px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  color: black;
+  text-decoration: none;
 }
 .button {
-  padding: 5px;
-  background: blue;
-  border-radius: 10px;
-}
-.button:hover {
-  display: inline-block;
-  font-size: 1rem;
-  background: #ffefba;
-  border: 1px solid transparent;
+  background-color: rgb(27, 198, 228);
   cursor: pointer;
+  user-select: none;
 }
 </style>
